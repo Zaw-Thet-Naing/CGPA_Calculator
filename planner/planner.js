@@ -59,7 +59,7 @@ function targetMarks() {
   targetMarks = targetMarks.toFixed(2);
   marks_needed = targetMarks - coursework_marks;
   marks_needed = marks_needed.toFixed(2);
-  if (hasUnknown) {
+  if (marks_needed <= 40) {
     document.getElementById("target_marks").innerHTML =
       "You will need to get to get a combined mark of " +
       marks_needed +
@@ -67,11 +67,18 @@ function targetMarks() {
       targetMarks +
       " equivalent to your traget GPA.";
   } else {
-    if (marks_needed > 40) {
+    if (hasUnknown) {
       document.getElementById("target_marks").innerHTML =
-        "Since you will need to get to get a mark of " +
+        "It will be impossible to reach the target since you will need to get to get a mark of " +
         marks_needed +
         " in the final exam";
+    } else {
+      document.getElementById("target_marks").innerHTML =
+        "You will need to get to get a combined mark of " +
+        marks_needed +
+        " for both coursework and final exam to reach " +
+        targetMarks +
+        " equivalent to your traget GPA.";
     }
   }
 }
